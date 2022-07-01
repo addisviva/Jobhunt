@@ -1,18 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Landing from "./pages/Landing";
+import styled from "styled-components";
 
+// const Button = styled.button`
+//   background: red;
+//   color:white ;
+//   font-size:1rem ;
+
+// `
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         Wanna get recognized on the market?
-        </p>
-        
-          Lets Hunt some Jobs!!!
-       
-      </header>
+      {/* <Button>click me</Button> */}
+          <h1> jobify</h1>
+          <Landing />
     </div>
   );
 }
