@@ -1,15 +1,18 @@
 import Landing from "./pages/Landing";
-
-
-
-
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {Register, Error, Dashboard} from './pages'
 function App() {
   return (
-    <div className="App">
-      
-          <h1> jobify</h1>
-          <Landing />
-    </div>
+    <BrowserRouter >
+
+    <Routes>
+     <Route path="/" element={ <Dashboard />} />
+     <Route path="/register" element={ <Register />} />
+     <Route path="/landing" element={<Landing />} />
+     <Route path="/error" element={ <Error />} />
+ 
+    </Routes>
+    </BrowserRouter>
   );
 }
 
