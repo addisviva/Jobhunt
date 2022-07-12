@@ -2,27 +2,34 @@ import {useState, useEffect} from 'react'
 import Wrapper from './../assets/wrappers/RegisterPage'
 import Logo from '../components/Logo'
 import { FormRow } from '../components'
+import { Alert } from '../components'
 function Register() {
    const initialState = {
      name: '',
      email:'',
      password:'',
-     isMember: true
+     isMember: true,
+     showAlert: false
    }
     const [values, setValues] = useState(initialState)
+    const toggleMember =()=>{
+      setValues({...values, isMember: !values.isMember})
+    }
     const onSubmit =(e)=>{
       e.preventDefault()
-      setValues(console.log(e.target))
+      console.log(e.target)
     }
     const handleChange =(e)=>{
       console.log(e.target) 
     } 
+    
   return (
     <Wrapper className='full-page'>
       <form onSubmit={onSubmit} className='form'>
         <Logo />
-         <h3>Login</h3>
-
+         <h3>{values.isMember ? 'Login' : 'Register'}</h3>
+         {values.showAlert && <Alert /> }
+         
 
          <div className='form-row'>
            <label htmlFor="name" className='form-label'>
@@ -48,6 +55,12 @@ function Register() {
             handleChange={handleChange}  />
          </div>
          <button type='submit' className='btn btn-block'>Submit</button>
+         <p>
+           { values.isMember ? 'Not a member please register': 'Already Member?'}
+           <button className='member-btn' onClick={toggleMember} >
+             {values.isMember ? 'Register' : 'Login'}
+           </button>
+         </p>
       </form>
       </Wrapper>
   )
